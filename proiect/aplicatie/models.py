@@ -14,6 +14,7 @@ class Transactions(models.Model):
     amount = models.FloatField()
     note = models.CharField(max_length=300)
     type = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.date} --> {self.amount}'

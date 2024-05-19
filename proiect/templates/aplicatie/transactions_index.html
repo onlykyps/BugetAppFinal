@@ -8,6 +8,7 @@
                 <th>Amount</th>
                 <th>Note</th>
                 <th>Type</th>
+                <th>Active</th>
             </tr>
         </thead>
         <tbody>
@@ -21,7 +22,11 @@
                     <td>
                             <a class="btn btn-warning btn-sm"  style="margin-left: 10px"
                                        href="{% url 'transactions:update' item.id %}">Update</a>
+
+                            <a class="btn btn-danger btn-sm"  style="margin-left: 10px"
+                                       href="{% url 'transactions:delete' item.id %}">Delete</a>
                     </td>
+                    <td>{{ item.active }}</td>
                 </tr>
             {% endfor %}
         </tbody>

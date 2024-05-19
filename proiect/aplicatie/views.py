@@ -1,5 +1,5 @@
 from django.forms import forms
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse
 from aplicatie.models import Transactions
@@ -50,8 +50,14 @@ class ExpensesReportView(ListView):
 
 class UpdateTransactionsView(UpdateView):
     model = Transactions
-    fields = ['date', 'account', 'amount', 'note', 'type']
+    fields = ['date', 'account', 'amount', 'note', 'type', 'active']
     template_name = 'aplicatie/transactions_form.html'
-    
+
     def get_success_url(self):
         return reverse('transactions:transactions_list')
+
+
+def delete_transaction(request, pk):
+
+    Transactions.objects.filter(id=pk).update(active=False)
+    return redirect('transactions:transactions_list')
