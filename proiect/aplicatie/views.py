@@ -1,6 +1,6 @@
 from django.forms import forms
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.urls import reverse
 from aplicatie.models import Transactions
 from django import forms
@@ -46,3 +46,12 @@ class IncomesReportView(ListView):
 class ExpensesReportView(ListView):
     model = Transactions
     template_name = 'aplicatie/expenses_report.html'
+
+
+class UpdateTransactionsView(UpdateView):
+    model = Transactions
+    fields = ['date', 'account', 'amount', 'note', 'type']
+    template_name = 'aplicatie/transactions_form.html'
+    
+    def get_success_url(self):
+        return reverse('transactions:transactions_list')

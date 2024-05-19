@@ -17,9 +17,10 @@
                     <td>{{ item.account }}</td>
                     <td>{{ item.amount }}</td>
                     <td>{{ item.note }}</td>
-                    <td>{{ item.type }}</td>
+<!--                    <td>{{ item.type }}</td>-->
                     <td>
-                        <a class="btn btn-sm btn-success" href="{% url 'transactions:add' %}">Add transaction</a>
+                            <a class="btn btn-warning btn-sm"  style="margin-left: 10px"
+                                       href="{% url 'transactions:update' item.id %}">Update</a>
                     </td>
                 </tr>
             {% endfor %}
