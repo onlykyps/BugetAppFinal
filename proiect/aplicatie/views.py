@@ -58,6 +58,10 @@ class UpdateTransactionsView(UpdateView):
 
 
 def delete_transaction(request, pk):
-
     Transactions.objects.filter(id=pk).update(active=False)
+    return redirect('transactions:transactions_list')
+
+
+def activate_transaction(request, pk):
+    Transactions.objects.filter(id=pk).update(active=True)
     return redirect('transactions:transactions_list')
