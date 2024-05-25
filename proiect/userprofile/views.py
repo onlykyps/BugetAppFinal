@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django.contrib.auth.models import User
+from userprofile.forms import NewAccountForm
 
 
 # Create your views here.

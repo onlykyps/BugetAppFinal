@@ -7,6 +7,11 @@
             <label>Username:<input class="form_control" type="text" name="username"></label>
             <label>Password:<input class="form_control" type="password" name="password"></label>
             <button type="submit" class="btn btn-info">Login</button>
+
+            <a class="btn btn-sm btn-primary"
+               style="margin-left: 10px"
+               href="{% url 'userprofile:new_user' %}">New Account</a>
+
             <span style="color: red">{{ form.non_field_errors }}</span>
             <div>
                 <a  href="{% url 'password_reset' %}">Click pentru resetarea parolei</a>
