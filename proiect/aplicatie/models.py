@@ -1,16 +1,29 @@
 from django.db import models
 
+
 # Create your models here.
+# class Category(models.Model):
+#     name = models.CharField(max_length=300)
+#     subcategory = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+#     subcategories = []
+#     pass
+#
+#
+# class Subcategory(models.Model):
+#     name = models.CharField(max_length=300)
+#     category = models.ForeignKey(Category, null=True, on_delete=models.set_null)
+#     subcategories = []
 
 
 class Transactions(models.Model):
-    # account_choices = (('created', 'created'),
-    #                    ('updated', 'update'),
-    #                    ('refresh', 'refresh'))
 
     date = models.DateTimeField(null=True)
-    # account = models.CharField(max_length=10, choices=account_choices)
     account = models.CharField(max_length=300)
+    # category = models.OneToOneField(
+    #     Category,
+    #     on_delete=models.CASCADE,
+    #     primary_key=True,
+    # )
     amount = models.FloatField()
     note = models.CharField(max_length=300)
     type = models.BooleanField(default=False)
@@ -28,3 +41,6 @@ class Logs(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True)
     action = models.CharField(max_length=10, choices=action_choices)
     url = models.CharField(max_length=100)
+
+
+
