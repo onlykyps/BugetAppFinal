@@ -32,7 +32,7 @@ class CreateNewAccount(CreateView):
             content = f'Datele tale de autentificare sunt: \n {user_instance.username} \n {psw}'
             msg_html = render_to_string('registration/invite_user.html',
                                         {'content_email': content})
-            email = EmailMultiAlternatives(subject='Date conectare aplicatie', body=content,
+            email = EmailMultiAlternatives(subject='Date conec tare aplicatie', body=content,
                                            from_email='contact@test.ro', to=[user_instance.email])
             email.attach_alternative(msg_html, 'text/html')
             email.send()

@@ -22,7 +22,7 @@ class TransactionsView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
 class CreateTransactionsView(LoginRequiredMixin, CreateView):
     model = Transactions
-    fields = ['date', 'account', 'amount', 'note', 'type']
+    fields = ['date', 'account', 'amount', 'note', 'subcategory', 'type']
     template_name = 'aplicatie/transactions_form.html'
 
     def get_success_url(self):
