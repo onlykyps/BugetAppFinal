@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 {% block title %}
+    <br>
+    <select id="test" name="form_select" onchange="showDiv(this)">
+        {% if field.label == 'subcategory' %}
+            {{ field.label }} {{ field }}
+        {% endif %}
+    </select>
+    <div id="hidden_div" style="display:none;">Hello hidden content</div>
+    <br>
+    <script type="text/javascript">
+    function showDiv(select){
+       if(select.value==1){
+        document.getElementById('hidden_div').style.display = "block";
+       } else{
+        document.getElementById('hidden_div').style.display = "none";
+       }
+    }
+    </script>
+
     <form method="post">
         {% csrf_token %}
         {% for field in form %}

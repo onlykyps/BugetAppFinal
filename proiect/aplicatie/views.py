@@ -54,10 +54,27 @@ class ExpensesReportView(LoginRequiredMixin, ListView):
     model = Transactions
     template_name = 'aplicatie/expenses_report.html'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['qs'] = Transactions.objects.all()
+        return context
+
+
+@login_required
+def ExpensesReportDef(request):
+    template_name = 'aplicatie/expenses_report.html'
+    trans = Transactions.objects.all()
+
+    context = {
+        'trans': trans
+    }
+    print(context)
+    render(request, 'aplicatie/expenses_report.html', context)
+
 
 class UpdateTransactionsView(LoginRequiredMixin, UpdateView):
     model = Transactions
-    fields = ['date', 'account', 'amount', 'note', 'type', 'active']
+    fields = ['date', 'account', 'amount', 'note', 'subcategory', 'type']
     template_name = 'aplicatie/transactions_form.html'
 
     def get_success_url(self):
